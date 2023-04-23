@@ -1,0 +1,57 @@
+@mixin btn-transition() {
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.btn {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: inherit;
+  overflow: visible;
+  text-transform: none;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  cursor: pointer;
+  @include btn-transition();
+
+  &:hover {
+    background-color: darken(#007bff, 5);
+    border-color: darken(#007bff, 5);
+  }
+
+  &:disabled {
+    background-color: lighten(#007bff, 15);
+    border-color: lighten(#007bff, 15);
+  }
+
+  &-secondary {
+
+    background-color: #6c757d;
+    border-color: #6c757d;
+
+    &:hover {
+      background-color: darken(#6c757d, 15);
+      border-color: darken(#6c757d, 15);
+    }
+  }
+}
+
+button {
+  outline: none;
+}
