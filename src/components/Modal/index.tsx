@@ -15,9 +15,10 @@ interface IProps {
 const countdownSeconds = 5;
 export default function Modal(props: IProps) {
   const [countdown, setCountdown] = useState(countdownSeconds);
-  const [{ confirmed }, setConfirmed] = useLocalStorageValue<
-    ILocalStorageValue
-  >("confirmData", { confirmed: false });
+  const [{ confirmed }, setConfirmed] =
+    useLocalStorageValue<ILocalStorageValue>("confirmData", {
+      confirmed: false,
+    });
 
   useEffect(() => {
     if (!props.isOpen) {
@@ -66,19 +67,13 @@ export default function Modal(props: IProps) {
           </p>
         </div>
         <div className="modal-footer">
-          {!confirmed ? (
-            <button
-              className="btn"
-              onClick={handleConfirm}
-              disabled={countdown > 0}
-            >
-              {countdown > 0 ? `Подтвердить (${countdown})` : "Подтвердить"}
-            </button>
-          ) : (
-            <button className="btn" onClick={handleConfirm}>
-              Закрыть
-            </button>
-          )}
+          <button
+            className="btn"
+            onClick={handleConfirm}
+            disabled={countdown > 0}
+          >
+            {countdown > 0 ? `Подтвердить (${countdown})` : "Подтвердить"}
+          </button>
           <button className="btn btn-secondary" onClick={handleCancel}>
             Отмена
           </button>
